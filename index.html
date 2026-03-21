@@ -122,44 +122,13 @@ body{font-family:'Noto Serif Bengali',serif;background:var(--sky);color:var(--cr
 .bk-num-area{padding:1.4rem 1.5rem 1rem;text-align:center;position:relative;z-index:1;}
 .bk-num-lbl{font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:.55rem;letter-spacing:.08em;text-transform:uppercase;}
 .bk-num-box{
-  background:rgba(255,255,255,.04);border:1.5px solid rgba(226,19,110,.28);
+  background:rgba(255,255,255,.04);border:1.5px solid rgba(226,19,110,.18);
   border-radius:18px;padding:1.15rem 1.3rem;
-  display:flex;align-items:center;justify-content:space-between;
-  cursor:pointer;transition:all .25s;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;user-select:none;-webkit-user-select:none;
 }
-.bk-num-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(226,19,110,.07),transparent);opacity:0;transition:.3s;}
-.bk-num-box:hover::before{opacity:1;}
-.bk-num-box:hover{border-color:rgba(226,19,110,.58);box-shadow:0 0 28px rgba(226,19,110,.2);}
-.bk-num-box:active{transform:scale(.975);}
-.bk-num-val{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.12em;}
-.bk-chip{display:flex;align-items:center;gap:.3rem;background:rgba(226,19,110,.15);border:1px solid rgba(226,19,110,.35);border-radius:10px;padding:.32rem .7rem;color:var(--bkash);font-size:.74rem;font-weight:700;font-family:'Noto Serif Bengali',serif;transition:all .2s;pointer-events:none;white-space:nowrap;}
-.bk-num-box.copied{border-color:rgba(50,200,80,.5);box-shadow:0 0 28px rgba(50,200,80,.15);}
-.bk-num-box.copied .bk-chip{background:rgba(50,200,80,.15);border-color:rgba(50,200,80,.35);color:#4cd97b;}
-.bk-tap{font-size:.68rem;color:rgba(255,255,255,.22);margin-top:.5rem;}
-
-/* Steps */
-.bk-steps{display:flex;align-items:flex-start;justify-content:center;gap:.25rem;padding:.9rem 1.2rem 1rem;position:relative;z-index:1;}
-.bk-step{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex:1;min-width:68px;max-width:88px;}
-.bk-sn{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8b6914);color:var(--dgreen);font-weight:900;font-size:.78rem;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;box-shadow:0 3px 10px rgba(201,168,76,.3);}
-.bk-st{font-size:.67rem;color:rgba(255,255,255,.5);text-align:center;line-height:1.4;}
-.bk-st strong{color:rgba(255,255,255,.85);}
-.bk-arr{color:var(--gold);opacity:.38;font-size:.95rem;margin-top:.82rem;}
-
-/* Amount suggestions */
-.bk-amounts{padding:0 1.5rem .8rem;position:relative;z-index:1;}
-.bk-amt-lbl{font-size:.7rem;color:rgba(255,255,255,.3);margin-bottom:.55rem;text-align:center;letter-spacing:.06em;text-transform:uppercase;}
-.bk-amt-chips{display:flex;gap:.45rem;justify-content:center;flex-wrap:wrap;}
-.bk-amt-chip{
-  background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);
-  border-radius:20px;padding:.38rem .9rem;color:var(--gold-l);
-  font-size:.8rem;font-weight:600;font-family:'Noto Serif Bengali',serif;
-  cursor:pointer;transition:all .2s;
-}
-.bk-amt-chip:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.45);transform:translateY(-2px);box-shadow:0 4px 12px rgba(201,168,76,.15);}
-.bk-amt-chip:active{transform:scale(.95);}
-
-/* Divider */
-.bk-div{margin:0 1.5rem;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.15),transparent);position:relative;z-index:1;}
+.bk-num-val{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.12em;filter:blur(5px);pointer-events:none;}
+.bk-num-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:rgba(255,255,255,.38);letter-spacing:.04em;pointer-events:none;}
 
 /* CTA */
 .bk-cta{
@@ -179,10 +148,6 @@ body{font-family:'Noto Serif Bengali',serif;background:var(--sky);color:var(--cr
 @keyframes pct{0%,100%{box-shadow:0 8px 30px rgba(226,19,110,.4),0 0 0 0 rgba(226,19,110,.4);}50%{box-shadow:0 8px 30px rgba(226,19,110,.4),0 0 0 14px rgba(226,19,110,0);}}
 .bk-cta-ic{font-size:1.3rem;}
 
-/* Info box */
-.bk-info{position:relative;z-index:1;margin:0 1.3rem 1.3rem;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.14);border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:.85rem 1rem;font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.8;text-align:left;}
-.bk-info strong{color:var(--gold-l);}
-
 /* Trust badges */
 .bk-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;padding:.8rem 1.5rem 1.2rem;position:relative;z-index:1;}
 .bk-badge{display:flex;align-items:center;gap:.3rem;font-size:.68rem;color:rgba(255,255,255,.28);}
@@ -196,12 +161,11 @@ body{font-family:'Noto Serif Bengali',serif;background:var(--sky);color:var(--cr
 .cfp{position:fixed;width:9px;height:9px;pointer-events:none;z-index:9998;border-radius:2px;}
 
 footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgba(255,255,255,.2);font-size:.85rem;border-top:1px solid rgba(201,168,76,.1);}
+footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;letter-spacing:.05em;}
 
 @media(max-width:480px){
   .photo-card{width:260px;}
   .bk-num-val{font-size:1.2rem;letter-spacing:.06em;}
-  .bk-steps{gap:.15rem;}
-  .bk-step{min-width:60px;}
 }
 </style>
 </head>
@@ -286,25 +250,30 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
       <div class="bk-stag">💸 সালামি পাঠান</div>
     </div>
 
-   
+    <!-- Receiver -->
+    <div class="bk-receiver">
+      <div class="bk-avatar">🙂</div>
+      <div class="bk-recv-info">
+        <div class="bk-recv-name">Riyad Bin Alom</div>
+        <div class="bk-recv-type">Personal · বিকাশ অ্যাকাউন্ট</div>
+      </div>
+      <div class="bk-recv-badge">✓ Verified</div>
+    </div>
 
     <!-- Number -->
-
     <div class="bk-num-area">
       <p class="bk-num-lbl">📱 বিকাশ নম্বর</p>
-      <div class="bk-num-box" id="numBox" onclick="copyNum()" role="button">
-        <span class="bk-num-val">01869–775608</span>
-        <div class="bk-chip" id="chip">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          <span id="chlbl">কপি করুন</span>
-        
+      <div class="bk-num-box" id="numBox">
+        <span class="bk-num-val">01869775608</span>
+        <div class="bk-num-hint">🔒 নিচের বাটনে ক্লিক করুন</div>
+      </div>
 
-    <!-- Steps removed, divider removed, amounts removed -->
+    </div>
 
-    <!-- CTA -->
+    <!-- CTA Button -->
     <button class="bk-cta" onclick="handleCta()">
       <span class="bk-cta-ic">💸</span>
-      <span id="ctaTxt"> সালামি পাঠান </span>
+      <span id="ctaTxt">সালামি পাঠান</span>
     </button>
 
     <!-- Trust badges -->
@@ -315,7 +284,8 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
     </div>
 
     <div class="bk-foot">📞 বিকাশ হেল্পলাইন: 16247 &nbsp;•&nbsp; © 2026 bKash Limited</div>
-  </div>
+
+  </div><!-- /.bk-card -->
 </section>
 
 <div class="toast" id="toast"></div>
@@ -323,8 +293,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
 <footer>
   <p>🌙 ঈদ মোবারক • تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم 🌙</p>
   <p style="margin-top:.5rem">আল্লাহ আপনাদের ঈদ কবুল করুন ✨</p>
-<p> Riyad Bin Alom </p>
-
+  <p class="name">— Riyad Bin Alom</p>
 </footer>
 
 <script>
@@ -343,7 +312,7 @@ function copyNum(){
   const box=document.getElementById('numBox');
   const lbl=document.getElementById('chlbl');
   const doSuccess=()=>{
-    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে! 🤧';
+    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে!';
     clearTimeout(cpTimer);cpTimer=setTimeout(()=>{box.classList.remove('copied');lbl.textContent='কপি করুন';},3500);
   };
   if(navigator.clipboard&&navigator.clipboard.writeText){
