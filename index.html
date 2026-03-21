@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ঈদ মোবারক 🌙</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Cinzel+Decorative:wght@700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c; --gold-l: #f0c96e; --gold-g: #ffe08a;
+  --dgreen: #0a3d2e; --mgreen: #145a3c; --sky: #060e1a;
+  --cream: #fdf6e3; --bkash: #e2136e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Serif Bengali',serif;background:var(--sky);color:var(--cream);overflow-x:hidden;}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+
+/* HERO */
+.hero{
+  position:relative;z-index:1;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at top,#0d1f35 0%,#060e1a 70%);
+  overflow:hidden;padding:2rem 1rem 3rem;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(60deg,transparent,transparent 40px,rgba(201,168,76,.03) 40px,rgba(201,168,76,.03) 41px),repeating-linear-gradient(-60deg,transparent,transparent 40px,rgba(201,168,76,.03) 40px,rgba(201,168,76,.03) 41px);
+}
+.moon-wrap{position:absolute;top:4%;right:7%;animation:mfl 7s ease-in-out infinite;}
+.moon{width:90px;height:90px;background:radial-gradient(circle at 35% 35%,#fff8dc,#f5d76e);border-radius:50%;box-shadow:0 0 28px 8px rgba(245,215,110,.35),0 0 70px 25px rgba(245,215,110,.12);overflow:hidden;position:relative;}
+.moon-sh{position:absolute;top:-15%;left:18%;width:72px;height:72px;background:#09152a;border-radius:50%;}
+@keyframes mfl{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-13px) rotate(4deg);}}
+.sp{position:absolute;color:var(--gold-l);animation:twk 2.2s ease-in-out infinite;}
+@keyframes twk{0%,100%{opacity:.15;transform:scale(.7);}50%{opacity:1;transform:scale(1.3);}}
+.bsmll{font-family:'Amiri',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.08em;margin-bottom:1.3rem;animation:fdD 1s ease .2s both;}
+
+/* PORTRAIT PHOTO */
+.photo-wrap{position:relative;margin-bottom:1.5rem;animation:fdD 1s ease .4s both;}
+.photo-card{
+  width:300px;border-radius:28px;padding:5px;
+  background:conic-gradient(var(--gold),var(--gold-l),#fff8a0,var(--gold),var(--gold-l),var(--gold));
+  animation:glw 4s ease-in-out infinite;position:relative;
+}
+@keyframes glw{
+  0%,100%{box-shadow:0 0 0 3px var(--dgreen),0 0 50px rgba(201,168,76,.5),0 0 90px rgba(201,168,76,.15);}
+  50%{box-shadow:0 0 0 3px var(--dgreen),0 0 70px rgba(201,168,76,.75),0 0 130px rgba(201,168,76,.28);}
+}
+.photo-card img{width:100%;border-radius:24px;display:block;object-fit:cover;background:linear-gradient(135deg,var(--mgreen),var(--dgreen));}
+.pc{position:absolute;font-size:2rem;color:var(--gold);line-height:1;filter:drop-shadow(0 0 6px rgba(201,168,76,.7));}
+.pc.tl{top:-15px;left:-15px;} .pc.tr{top:-15px;right:-15px;transform:scaleX(-1);}
+.pc.bl{bottom:-15px;left:-15px;transform:scaleY(-1);} .pc.br{bottom:-15px;right:-15px;transform:scale(-1);}
+
+.eid-title{
+  font-family:'Cinzel Decorative',serif;font-size:clamp(2.4rem,8vw,5rem);font-weight:900;
+  background:linear-gradient(140deg,var(--gold-g),var(--gold),#7a5a10,var(--gold-l),var(--gold-g));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-align:center;line-height:1.1;filter:drop-shadow(0 0 22px rgba(201,168,76,.5));
+  animation:fdU 1s ease .7s both;margin-top:.3rem;
+}
+.eid-sub{font-size:clamp(.95rem,3vw,1.3rem);color:var(--gold-l);text-align:center;margin-top:.4rem;letter-spacing:.04em;animation:fdU 1s ease .9s both;}
+.takbir{margin-top:1.5rem;border:1px solid rgba(201,168,76,.35);border-radius:18px;padding:1rem 1.5rem;text-align:center;background:rgba(201,168,76,.07);backdrop-filter:blur(8px);max-width:450px;width:90%;animation:fdU 1s ease 1.1s both;}
+.takbir-ar{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold-l);direction:rtl;margin-bottom:.3rem;}
+.takbir-bn{font-size:.87rem;color:rgba(255,255,255,.55);line-height:1.6;}
+.sc-hint{position:absolute;bottom:22px;color:var(--gold);font-size:1.7rem;opacity:.6;animation:bnc 2s ease infinite;cursor:pointer;}
+@keyframes bnc{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+@keyframes fdD{from{opacity:0;transform:translateY(-28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fdU{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* GREETING */
+.sec{position:relative;z-index:1;padding:5rem 1.5rem;max-width:760px;margin:0 auto;text-align:center;}
+.dvd{display:flex;align-items:center;gap:1rem;margin:0 auto 2.5rem;max-width:360px;}
+.dl{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+.di{color:var(--gold);font-size:1.4rem;}
+.st{font-size:clamp(1.25rem,4vw,1.85rem);color:var(--gold-l);font-weight:700;margin-bottom:1.6rem;}
+.gt{font-size:clamp(.95rem,2.5vw,1.2rem);line-height:2;color:rgba(255,255,255,.82);}
+.gt .hl{color:var(--gold-l);font-weight:600;}
+.orn{text-align:center;font-size:1.3rem;color:var(--gold);opacity:.4;letter-spacing:.6em;margin:1.5rem 0;}
+
+/* SALAMI */
+.slam-sec{position:relative;z-index:1;padding:4rem 1.5rem 3.5rem;text-align:center;background:linear-gradient(180deg,transparent,rgba(10,61,46,.35),transparent);}
+.moon-tag{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;line-height:1.55;background:linear-gradient(135deg,var(--gold-g),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 13px rgba(201,168,76,.4));margin-bottom:.8rem;}
+.moon-sub{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:2.4rem;}
+.dlg{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);border-radius:18px;padding:1rem 1.4rem;margin:.65rem auto;max-width:480px;font-size:.95rem;color:rgba(255,255,255,.78);transition:all .3s;cursor:default;position:relative;overflow:hidden;}
+.dlg::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.07),transparent);opacity:0;transition:.3s;}
+.dlg:hover::before{opacity:1;}
+.dlg:hover{border-color:rgba(201,168,76,.45);transform:scale(1.02);box-shadow:0 6px 25px rgba(201,168,76,.12);}
+
+/* BKASH CARD */
+.bk-sec{position:relative;z-index:1;padding:0 1.5rem 6rem;display:flex;flex-direction:column;align-items:center;}
+
+/* Section header */
+.bk-sec-head{text-align:center;margin-bottom:1.8rem;}
+.bk-sec-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;background:linear-gradient(135deg,var(--gold-g),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem;}
+.bk-sec-sub{font-size:.88rem;color:rgba(255,255,255,.38);}
+
+.bk-card{
+  width:100%;max-width:420px;
+  border-radius:32px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#0f2218 0%,#0a1a10 100%);
+  border:1px solid rgba(201,168,76,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(201,168,76,.05) inset,0 0 60px rgba(10,61,46,.3);
+}
+.bk-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(201,168,76,.09) 0%,transparent 55%),radial-gradient(ellipse at bottom right,rgba(10,61,46,.5) 0%,transparent 55%);pointer-events:none;}
+
+/* Top bar */
+.bk-top{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.5rem 1.1rem;border-bottom:1px solid rgba(201,168,76,.1);position:relative;z-index:1;}
+.bk-brand{display:flex;align-items:center;gap:.5rem;}
+.bk-pill{background:var(--bkash);color:#fff;font-family:Arial,sans-serif;font-weight:900;font-size:1.15rem;padding:.22rem .75rem;border-radius:20px;box-shadow:0 4px 14px rgba(226,19,110,.35);}
+.bk-lbl{color:rgba(255,255,255,.35);font-size:.75rem;}
+.bk-stag{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold-l);font-size:.7rem;font-weight:600;padding:.28rem .75rem;border-radius:20px;}
+
+/* Receiver profile */
+.bk-receiver{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+.bk-avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8b6914);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 14px rgba(201,168,76,.3);flex-shrink:0;}
+.bk-recv-info{flex:1;}
+.bk-recv-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.1rem;}
+.bk-recv-type{font-size:.72rem;color:rgba(255,255,255,.35);}
+.bk-recv-badge{background:rgba(50,200,80,.12);border:1px solid rgba(50,200,80,.25);color:#4cd97b;font-size:.65rem;font-weight:700;padding:.22rem .6rem;border-radius:10px;font-family:Arial,sans-serif;}
+
+/* Number area */
+.bk-num-area{padding:1.4rem 1.5rem 1rem;text-align:center;position:relative;z-index:1;}
+.bk-num-lbl{font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:.55rem;letter-spacing:.08em;text-transform:uppercase;}
+.bk-num-box{
+  background:rgba(255,255,255,.04);border:1.5px solid rgba(226,19,110,.28);
+  border-radius:18px;padding:1.15rem 1.3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;transition:all .25s;position:relative;overflow:hidden;
+}
+.bk-num-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(226,19,110,.07),transparent);opacity:0;transition:.3s;}
+.bk-num-box:hover::before{opacity:1;}
+.bk-num-box:hover{border-color:rgba(226,19,110,.58);box-shadow:0 0 28px rgba(226,19,110,.2);}
+.bk-num-box:active{transform:scale(.975);}
+.bk-num-val{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.12em;}
+.bk-chip{display:flex;align-items:center;gap:.3rem;background:rgba(226,19,110,.15);border:1px solid rgba(226,19,110,.35);border-radius:10px;padding:.32rem .7rem;color:var(--bkash);font-size:.74rem;font-weight:700;font-family:'Noto Serif Bengali',serif;transition:all .2s;pointer-events:none;white-space:nowrap;}
+.bk-num-box.copied{border-color:rgba(50,200,80,.5);box-shadow:0 0 28px rgba(50,200,80,.15);}
+.bk-num-box.copied .bk-chip{background:rgba(50,200,80,.15);border-color:rgba(50,200,80,.35);color:#4cd97b;}
+.bk-tap{font-size:.68rem;color:rgba(255,255,255,.22);margin-top:.5rem;}
+
+/* Steps */
+.bk-steps{display:flex;align-items:flex-start;justify-content:center;gap:.25rem;padding:.9rem 1.2rem 1rem;position:relative;z-index:1;}
+.bk-step{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex:1;min-width:68px;max-width:88px;}
+.bk-sn{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8b6914);color:var(--dgreen);font-weight:900;font-size:.78rem;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;box-shadow:0 3px 10px rgba(201,168,76,.3);}
+.bk-st{font-size:.67rem;color:rgba(255,255,255,.5);text-align:center;line-height:1.4;}
+.bk-st strong{color:rgba(255,255,255,.85);}
+.bk-arr{color:var(--gold);opacity:.38;font-size:.95rem;margin-top:.82rem;}
+
+/* Amount suggestions */
+.bk-amounts{padding:0 1.5rem .8rem;position:relative;z-index:1;}
+.bk-amt-lbl{font-size:.7rem;color:rgba(255,255,255,.3);margin-bottom:.55rem;text-align:center;letter-spacing:.06em;text-transform:uppercase;}
+.bk-amt-chips{display:flex;gap:.45rem;justify-content:center;flex-wrap:wrap;}
+.bk-amt-chip{
+  background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);
+  border-radius:20px;padding:.38rem .9rem;color:var(--gold-l);
+  font-size:.8rem;font-weight:600;font-family:'Noto Serif Bengali',serif;
+  cursor:pointer;transition:all .2s;
+}
+.bk-amt-chip:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.45);transform:translateY(-2px);box-shadow:0 4px 12px rgba(201,168,76,.15);}
+.bk-amt-chip:active{transform:scale(.95);}
+
+/* Divider */
+.bk-div{margin:0 1.5rem;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.15),transparent);position:relative;z-index:1;}
+
+/* CTA */
+.bk-cta{
+  position:relative;z-index:1;margin:1.2rem 1.3rem .9rem;
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  background:linear-gradient(135deg,#e2136e,#b8005a);color:#fff;border:none;
+  border-radius:18px;padding:1.15rem 1.4rem;font-size:1.05rem;font-weight:700;
+  font-family:'Noto Serif Bengali',serif;cursor:pointer;
+  width:calc(100% - 2.6rem);
+  box-shadow:0 8px 30px rgba(226,19,110,.4);
+  transition:transform .2s,box-shadow .2s;
+  animation:pct 2.5s ease-in-out infinite;overflow:hidden;
+}
+.bk-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 55%);pointer-events:none;}
+.bk-cta:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 16px 42px rgba(226,19,110,.58);animation:none;}
+.bk-cta:active{transform:scale(.97);}
+@keyframes pct{0%,100%{box-shadow:0 8px 30px rgba(226,19,110,.4),0 0 0 0 rgba(226,19,110,.4);}50%{box-shadow:0 8px 30px rgba(226,19,110,.4),0 0 0 14px rgba(226,19,110,0);}}
+.bk-cta-ic{font-size:1.3rem;}
+
+/* Info box */
+.bk-info{position:relative;z-index:1;margin:0 1.3rem 1.3rem;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.14);border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:.85rem 1rem;font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.8;text-align:left;}
+.bk-info strong{color:var(--gold-l);}
+
+/* Trust badges */
+.bk-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;padding:.8rem 1.5rem 1.2rem;position:relative;z-index:1;}
+.bk-badge{display:flex;align-items:center;gap:.3rem;font-size:.68rem;color:rgba(255,255,255,.28);}
+
+/* Card footer */
+.bk-foot{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.06);padding:.8rem;text-align:center;font-size:.68rem;color:rgba(255,255,255,.16);background:rgba(0,0,0,.15);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(130px);background:linear-gradient(135deg,#0a3d2e,#145a3c);border:1px solid var(--gold);border-radius:20px;padding:1rem 1.6rem;color:var(--gold-l);font-size:.93rem;font-family:'Noto Serif Bengali',serif;z-index:9999;transition:transform .4s cubic-bezier(.175,.885,.32,1.275);box-shadow:0 15px 50px rgba(0,0,0,.5);max-width:340px;width:88%;text-align:center;pointer-events:none;white-space:pre-line;line-height:1.6;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.cfp{position:fixed;width:9px;height:9px;pointer-events:none;z-index:9998;border-radius:2px;}
+
+footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgba(255,255,255,.2);font-size:.85rem;border-top:1px solid rgba(201,168,76,.1);}
+
+@media(max-width:480px){
+  .photo-card{width:260px;}
+  .bk-num-val{font-size:1.2rem;letter-spacing:.06em;}
+  .bk-steps{gap:.15rem;}
+  .bk-step{min-width:60px;}
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="moon-wrap"><div class="moon"><div class="moon-sh"></div></div></div>
+  <span class="sp" style="top:11%;left:7%;font-size:1rem;animation-delay:0s">✦</span>
+  <span class="sp" style="top:20%;left:20%;font-size:.75rem;animation-delay:.6s">★</span>
+  <span class="sp" style="top:6%;left:50%;font-size:.9rem;animation-delay:1.1s">✦</span>
+  <span class="sp" style="top:17%;left:70%;font-size:.65rem;animation-delay:.3s">✧</span>
+  <span class="sp" style="top:36%;left:3%;font-size:.85rem;animation-delay:.8s">★</span>
+  <span class="sp" style="top:52%;left:95%;font-size:.9rem;animation-delay:1.3s">✦</span>
+  <span class="sp" style="top:65%;left:10%;font-size:.65rem;animation-delay:.5s">✧</span>
+  <span class="sp" style="top:75%;left:83%;font-size:.85rem;animation-delay:.2s">★</span>
+
+  <p class="bsmll">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+
+  <div class="photo-wrap">
+    <div class="photo-card">
+      <img src="eid.png" alt="ঈদ মোবারক"
+        onerror="this.style.cssText='min-height:360px;width:100%;border-radius:24px;background:linear-gradient(135deg,#145a3c,#0a3d2e);display:block'">
+    </div>
+    <span class="pc tl">❋</span><span class="pc tr">❋</span>
+    <span class="pc bl">❋</span><span class="pc br">❋</span>
+  </div>
+
+  <h1 class="eid-title">Eid Mubarak</h1>
+  <p class="eid-sub">🌙 ঈদুল ফিতরের শুভেচ্ছা 🌙</p>
+
+  <div class="takbir">
+    <p class="takbir-ar">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم</p>
+    <p class="takbir-bn">তাকবালাল্লাহু মিন্না ওয়া মিনকুম<br>আল্লাহ আমাদের ও আপনার ইবাদত কবুল করুন 🤲</p>
+  </div>
+  <div class="sc-hint" onclick="document.getElementById('greet').scrollIntoView({behavior:'smooth'})">↓</div>
+</section>
+
+<!-- GREETING -->
+<section class="sec" id="greet">
+  <div class="dvd"><div class="dl"></div><div class="di">☽</div><div class="dl"></div></div>
+  <h2 class="st">প্রিয়জনের প্রতি ঈদের শুভেচ্ছা 💚</h2>
+  <p class="gt">
+    আপনাকে ও আপনার পরিবারকে জানাই <span class="hl">ঈদ মোবারক!</span> 🌙<br><br>
+    এই পবিত্র ঈদুল ফিতরের দিনে আল্লাহ পাক আপনার সব গোনাহ মাফ করুন,<br>
+    আপনার দুআ কবুল করুন, আপনাকে সুখ, সমৃদ্ধি ও ভালোবাসায় ভরিয়ে দিন 🤲<br><br>
+    <span class="hl">রমজানের ত্যাগ যেন সারা বছরের বরকত হয়ে আসে।</span><br><br>
+    এই খুশির দিনে আমি আপনাকে মনে করছি এবং দোয়া করছি —<br>
+    আপনার জীবন যেন ঈদের মতোই আনন্দময় হোক! 🌸
+  </p>
+  <div class="orn">✦ ✧ ❋ ✧ ✦</div>
+</section>
+
+<!-- SALAMI -->
+<section class="slam-sec" id="salami">
+  <h2 class="moon-tag">🌙 ঈদের চাঁদ আকাশে,<br>সালাম দিন বিকাশে! 💚</h2>
+  <p class="moon-sub">সালামি দেওয়া মুস্তাহাব... তর্ক করবেন না, দিয়ে দিন 😇<br>না দিলে ঈদের সেমাই হজম হবে না — গ্যারান্টি!</p>
+  <div class="dlg">😇 আপনি কি জানেন? সালামি দিলে দোয়া কবুল হয় দ্রুত। (সূত্র: মনগড়া কিন্তু একদম মন থেকে 😂)</div>
+  <div class="dlg">🤔 "সালামি না দিলে কি হয়?" — এই প্রশ্নের উত্তর আমার মুখের দিকে তাকালেই পাবেন!</div>
+  <div class="dlg">💡 গবেষণায় প্রমাণিত: যারা ঈদে সালামি দেয়, তাদের কাছে আবার ঈদে দাওয়াত আসে! 🍽️</div>
+  <div class="dlg">🌙 চাঁদ রাতে একটু পাঠান — চাঁদের আলোর মতো আমার মুখ উজ্জ্বল হয়ে যাবে! ✨</div>
+  <div class="dlg">💚 বিকাশ করেছেন কাজটা সহজ — সালামি পাঠান, দোয়া নিন, ঈদ উপভোগ করুন। Win-Win! 🤝</div>
+</section>
+
+<!-- BKASH -->
+<section class="bk-sec">
+
+  <div class="bk-sec-head">
+    <div class="bk-sec-title">💚 সালামি পাঠানো এখন সহজ!</div>
+    <div class="bk-sec-sub">নিচের নম্বর কপি করুন, বিকাশে পাঠান</div>
+  </div>
+
+  <div class="bk-card">
+
+    <!-- Top bar -->
+    <div class="bk-top">
+      <div class="bk-brand">
+        <div class="bk-pill">bKash</div>
+        <span class="bk-lbl">Send Money</span>
+      </div>
+      <div class="bk-stag">💸 সালামি পাঠান</div>
+    </div>
+
+    <!-- Receiver profile -->
+    <div class="bk-receiver">
+      <div class="bk-avatar">🌙</div>
+      <div class="bk-recv-info">
+        <div class="bk-recv-name">ঈদের সালামি গ্রহণকারী</div>
+        <div class="bk-recv-type">Personal bKash Account</div>
+      </div>
+      <div class="bk-recv-badge">✓ Verified</div>
+    </div>
+
+    <!-- Number -->
+    <div class="bk-num-area">
+      <p class="bk-num-lbl">📱 বিকাশ নম্বর</p>
+      <div class="bk-num-box" id="numBox" onclick="copyNum()" role="button">
+        <span class="bk-num-val">01869–775608</span>
+        <div class="bk-chip" id="chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="chlbl">কপি করুন</span>
+        </div>
+      </div>
+      <p class="bk-tap">👆 ক্লিক/ট্যাপ করলেই নম্বর কপি হবে</p>
+    </div>
+
+    <!-- Steps removed, divider removed, amounts removed -->
+
+    <!-- CTA -->
+    <button class="bk-cta" onclick="handleCta()">
+      <span class="bk-cta-ic">💸</span>
+      <span id="ctaTxt">নম্বর কপি করুন &amp; সালামি দিন!</span>
+    </button>
+
+    <!-- Trust badges -->
+    <div class="bk-trust">
+      <div class="bk-badge">🔒 নিরাপদ</div>
+      <div class="bk-badge">⚡ তাৎক্ষণিক</div>
+      <div class="bk-badge">✅ নির্ভরযোগ্য</div>
+    </div>
+
+    <div class="bk-foot">📞 বিকাশ হেল্পলাইন: 16247 &nbsp;•&nbsp; © 2025 bKash Limited</div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <p>🌙 ঈদ মোবারক • تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم 🌙</p>
+  <p style="margin-top:.5rem">আল্লাহ আপনাদের ঈদ কবুল করুন ✨</p>
+</footer>
+
+<script>
+/* STARS */
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let st=[];
+function rsz(){cv.width=innerWidth;cv.height=innerHeight;}
+function mkSt(){st=Array.from({length:130},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.4+.3,ph:Math.random()*Math.PI*2,sp:Math.random()*.007+.003}));}
+function drw(t){cx.clearRect(0,0,cv.width,cv.height);st.forEach(s=>{const a=.2+.8*Math.abs(Math.sin(s.ph+t*s.sp));cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);cx.fillStyle=`rgba(232,213,163,${a})`;cx.fill();});requestAnimationFrame(drw);}
+rsz();mkSt();requestAnimationFrame(drw);
+window.addEventListener('resize',()=>{rsz();mkSt();});
+
+/* COPY */
+const NUM='01869775608';
+let cpTimer;
+function copyNum(){
+  const box=document.getElementById('numBox');
+  const lbl=document.getElementById('chlbl');
+  const doSuccess=()=>{
+    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে!';
+    clearTimeout(cpTimer);cpTimer=setTimeout(()=>{box.classList.remove('copied');lbl.textContent='কপি করুন';},3500);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(NUM).then(doSuccess).catch(fallback);
+  } else { fallback(); }
+  function fallback(){
+    const ta=document.createElement('textarea');
+    ta.value=NUM;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);doSuccess();
+  }
+}
+
+const msgs=[
+  '📋 নম্বর কপি হয়েছে!\nবিকাশ অ্যাপ → Send Money\n→ 01869775608 পেস্ট করুন 💚',
+  '✅ কপি হয়েছে! জাযাকাল্লাহ!\nবিকাশ → Send Money → পেস্ট → পাঠান 🤲',
+  '🎉 নম্বর কপি! বিকাশে যান\n→ Send Money → পেস্ট → সালামি দিন! 💸',
+  '💚 এক ক্লিকে কপি হলো!\nবিকাশ → Send Money → 01869775608 🌙',
+];
+let tt;
+function showToast(txt){const t=document.getElementById('toast');t.textContent=txt;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),6500);}
+
+function handleCta(){
+  copyNum();
+  setTimeout(()=>{
+    showToast(msgs[~~(Math.random()*msgs.length)]);
+    launch();
+  },350);
+}
+
+function launch(){
+  const cols=['#c9a84c','#f0c96e','#e2136e','#145a3c','#fff8dc','#50c878','#ff9ad5'];
+  for(let i=0;i<70;i++){
+    const p=document.createElement('div');p.className='cfp';
+    p.style.cssText=`left:${Math.random()*100}vw;top:-14px;background:${cols[~~(Math.random()*cols.length)]};transform:rotate(${Math.random()*360}deg);border-radius:${Math.random()>.5?'50%':'2px'}`;
+    document.body.appendChild(p);
+    const an=p.animate([{transform:`translateY(0) rotate(0)`,opacity:1},{transform:`translateY(${innerHeight+130}px) rotate(${Math.random()*720-360}deg)`,opacity:0}],{duration:2400+Math.random()*2000,delay:Math.random()*600,easing:'ease-in'});
+    an.onfinish=()=>p.remove();
+  }
+}
+
+/* REVEAL */
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)';}});},{threshold:.1});
+document.querySelectorAll('.dlg').forEach(el=>{el.style.cssText+='opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+</body>
+</html>
