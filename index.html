@@ -286,17 +286,10 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
       <div class="bk-stag">💸 সালামি পাঠান</div>
     </div>
 
-    <!-- Receiver profile -->
-    <div class="bk-receiver">
-      <div class="bk-avatar">🌙</div>
-      <div class="bk-recv-info">
-        <div class="bk-recv-name">ঈদের সালামি গ্রহণকারী</div>
-        <div class="bk-recv-type">Personal bKash Account</div>
-      </div>
-      <div class="bk-recv-badge">✓ Verified</div>
-    </div>
+   
 
     <!-- Number -->
+
     <div class="bk-num-area">
       <p class="bk-num-lbl">📱 বিকাশ নম্বর</p>
       <div class="bk-num-box" id="numBox" onclick="copyNum()" role="button">
@@ -304,17 +297,14 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
         <div class="bk-chip" id="chip">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span id="chlbl">কপি করুন</span>
-        </div>
-      </div>
-      <p class="bk-tap">👆 ক্লিক/ট্যাপ করলেই নম্বর কপি হবে</p>
-    </div>
+        
 
     <!-- Steps removed, divider removed, amounts removed -->
 
     <!-- CTA -->
     <button class="bk-cta" onclick="handleCta()">
       <span class="bk-cta-ic">💸</span>
-      <span id="ctaTxt">নম্বর কপি করুন &amp; সালামি দিন!</span>
+      <span id="ctaTxt"> সালামি পাঠান </span>
     </button>
 
     <!-- Trust badges -->
@@ -324,7 +314,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
       <div class="bk-badge">✅ নির্ভরযোগ্য</div>
     </div>
 
-    <div class="bk-foot">📞 বিকাশ হেল্পলাইন: 16247 &nbsp;•&nbsp; © 2025 bKash Limited</div>
+    <div class="bk-foot">📞 বিকাশ হেল্পলাইন: 16247 &nbsp;•&nbsp; © 2026 bKash Limited</div>
   </div>
 </section>
 
@@ -333,6 +323,8 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgb
 <footer>
   <p>🌙 ঈদ মোবারক • تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم 🌙</p>
   <p style="margin-top:.5rem">আল্লাহ আপনাদের ঈদ কবুল করুন ✨</p>
+<p> Riyad Bin Alom </p>
+
 </footer>
 
 <script>
@@ -351,7 +343,7 @@ function copyNum(){
   const box=document.getElementById('numBox');
   const lbl=document.getElementById('chlbl');
   const doSuccess=()=>{
-    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে!';
+    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে! 🤧';
     clearTimeout(cpTimer);cpTimer=setTimeout(()=>{box.classList.remove('copied');lbl.textContent='কপি করুন';},3500);
   };
   if(navigator.clipboard&&navigator.clipboard.writeText){
