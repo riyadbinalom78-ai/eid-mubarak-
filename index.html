@@ -258,7 +258,7 @@ footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;let
 
 <!-- SALAMI -->
 <section class="slam-sec" id="salami">
-  <h2 class="moon-tag">🌙 ঈদের চাঁদ আকাশে,<br>সালাম দিন বিকাশে! 💚</h2>
+  <h2 class="moon-tag">🌙 ঈদের চাঁদ আকাশে,<br>সালামি দিন বিকাশে! 💚</h2>
   <p class="moon-sub">সালামি দেওয়া মুস্তাহাব... তর্ক করবেন না, দিয়ে দিন 😇<br>না দিলে ঈদের সেমাই হজম হবে না — গ্যারান্টি!</p>
   <div class="dlg">😇 আপনি কি জানেন? সালামি দিলে দোয়া কবুল হয় দ্রুত। (সূত্র: মনগড়া কিন্তু একদম মন থেকে 😂)</div>
   <div class="dlg">🤔 "সালামি না দিলে কি হয়?" — এই প্রশ্নের উত্তর আমার মুখের দিকে তাকালেই পাবেন!</div>
@@ -334,18 +334,18 @@ footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;let
     <div class="modal-steps">
       <div class="modal-step">
         <div class="modal-sn">১</div>
-        <div class="modal-st"><strong>বিকাশ অ্যাপ</strong> খুলুন → নিচে <strong>Send Money</strong> চাপুন</div>
+        <div class="modal-st"><strong>বিকাশ অ্যাপ</strong> এখন খোলার চেষ্টা হচ্ছে — না খুললে নিজে খুলুন 📱</div>
       </div>
       <div class="modal-step">
         <div class="modal-sn">২</div>
-        <div class="modal-st">নম্বর বক্সে <strong>পেস্ট করুন</strong> — নম্বরটা ক্লিপবোর্ডে আছে 📋</div>
+        <div class="modal-st"><strong>Send Money</strong> চাপুন → নম্বর বক্সে <strong>পেস্ট করুন</strong> — নম্বর কপি আছে 📋</div>
       </div>
       <div class="modal-step">
         <div class="modal-sn">৩</div>
-        <div class="modal-st"><strong>পরিমাণ দিন</strong> এবং <strong>পাঠান</strong> — ব্যস, সালামি দেওয়া হয়ে গেল! 🎉</div>
+        <div class="modal-st"><strong>পরিমাণ দিন</strong> → <strong>পাঠান</strong> — সালামি দেওয়া হয়ে গেল! 🎉</div>
       </div>
     </div>
-    <button class="modal-close" onclick="closeModal()">বুঝেছি, যাচ্ছি বিকাশে! 💚</button>
+    <button class="modal-close" onclick="closeModal();openBkash()">বুঝেছি, যাচ্ছি বিকাশে! 💚</button>
   </div>
 </div>
 
@@ -384,28 +384,52 @@ function handleCta(){
   const box=document.getElementById('numBox');
   const btn=document.querySelector('.bk-cta');
 
-  // Disable button briefly
   btn.disabled=true;
   btn.style.opacity='.7';
 
   copyNum(()=>{
-    // Unlock number display
     box.classList.add('unlocked');
-
-    // Confetti
     launch();
 
-    // Show modal after short delay
+    // Try bKash deep link immediately
+    window.location.href='bkash://send?to=01869775608';
+
+    // Show modal instantly
     setTimeout(()=>{
       document.getElementById('modalOverlay').classList.add('show');
       btn.disabled=false;
       btn.style.opacity='1';
-    }, 600);
+    },300);
   });
+}
+
+function openBkash(){
+  window.location.href='bkash://send?to=01869775608';
 }
 
 function closeModal(){
   document.getElementById('modalOverlay').classList.remove('show');
+}
+
+function openBkash(){
+  const appScheme='bkash://send?to=01869775608';
+  const playStore='https://play.google.com/store/apps/details?id=com.bKash.customerapp';
+  const appStore='https://apps.apple.com/app/bkash/id1300521010';
+
+  const iframe=document.createElement('iframe');
+  iframe.style.cssText='position:fixed;opacity:0;top:0;left:0;width:1px;height:1px;border:none;';
+  iframe.src=appScheme;
+  document.body.appendChild(iframe);
+
+  let appOpened=false;
+  window.addEventListener('blur',()=>{appOpened=true;},{once:true});
+  setTimeout(()=>{
+    document.body.removeChild(iframe);
+    if(!appOpened){
+      const isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+      window.open(isIOS?appStore:playStore,'_blank');
+    }
+  },2000);
 }
 
 // Close modal on overlay click
