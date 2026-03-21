@@ -124,11 +124,31 @@ body{font-family:'Noto Serif Bengali',serif;background:var(--sky);color:var(--cr
 .bk-num-box{
   background:rgba(255,255,255,.04);border:1.5px solid rgba(226,19,110,.18);
   border-radius:18px;padding:1.15rem 1.3rem;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:space-between;
   position:relative;overflow:hidden;user-select:none;-webkit-user-select:none;
+  transition:border-color .4s,box-shadow .4s;
 }
-.bk-num-val{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.12em;filter:blur(5px);pointer-events:none;}
-.bk-num-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:rgba(255,255,255,.38);letter-spacing:.04em;pointer-events:none;}
+.bk-num-val{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.12em;filter:blur(6px);transition:filter .5s,color .4s;}
+.bk-num-lock{font-size:1.2rem;opacity:.4;transition:opacity .4s,transform .4s;}
+.bk-num-box.unlocked{border-color:rgba(50,200,80,.55);box-shadow:0 0 28px rgba(50,200,80,.18);}
+.bk-num-box.unlocked .bk-num-val{filter:blur(0);color:#4cd97b;}
+.bk-num-box.unlocked .bk-num-lock{content:'✅';opacity:0;transform:scale(0);}
+
+/* Modal overlay */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:9990;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .35s;}
+.modal-overlay.show{opacity:1;pointer-events:all;}
+.modal-box{background:linear-gradient(160deg,#0f2218,#0a1a10);border:1px solid rgba(201,168,76,.3);border-radius:28px;padding:2rem 1.5rem;max-width:370px;width:100%;text-align:center;transform:translateY(30px) scale(.95);transition:transform .35s cubic-bezier(.175,.885,.32,1.275);box-shadow:0 30px 80px rgba(0,0,0,.7);}
+.modal-overlay.show .modal-box{transform:translateY(0) scale(1);}
+.modal-title{font-size:1.3rem;font-weight:700;color:var(--gold-l);margin-bottom:.3rem;}
+.modal-sub{font-size:.83rem;color:rgba(255,255,255,.4);margin-bottom:1.6rem;}
+.modal-num{font-family:'Courier New',monospace;font-size:1.55rem;font-weight:900;color:#4cd97b;letter-spacing:.1em;background:rgba(50,200,80,.08);border:1px solid rgba(50,200,80,.25);border-radius:14px;padding:.75rem 1rem;margin-bottom:1.5rem;}
+.modal-steps{text-align:left;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.6rem;}
+.modal-step{display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.1);border-radius:14px;padding:.75rem 1rem;}
+.modal-sn{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8b6914);color:var(--dgreen);font-weight:900;font-size:.78rem;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;flex-shrink:0;}
+.modal-st{font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.45;}
+.modal-st strong{color:var(--gold-l);}
+.modal-close{background:linear-gradient(135deg,var(--gold),#8b6914);color:var(--dgreen);border:none;border-radius:14px;padding:.85rem 2rem;font-size:.95rem;font-weight:700;font-family:'Noto Serif Bengali',serif;cursor:pointer;width:100%;transition:transform .2s,box-shadow .2s;}
+.modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,168,76,.35);}
 
 /* CTA */
 .bk-cta{
@@ -236,7 +256,7 @@ footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;let
 
   <div class="bk-sec-head">
     <div class="bk-sec-title">💚 সালামি পাঠানো এখন সহজ!</div>
-    <div class="bk-sec-sub">নিচের নম্বর কপি করুন, বিকাশে পাঠান</div>
+    <div class="bk-sec-sub">নিচের বাটনে ক্লিক করুন — বাকিটা আমরা বলে দেব 😊</div>
   </div>
 
   <div class="bk-card">
@@ -260,14 +280,13 @@ footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;let
       <div class="bk-recv-badge">✓ Verified</div>
     </div>
 
-    <!-- Number -->
+    <!-- Number (display only — unlocks on button click) -->
     <div class="bk-num-area">
       <p class="bk-num-lbl">📱 বিকাশ নম্বর</p>
       <div class="bk-num-box" id="numBox">
-        <span class="bk-num-val">01869775608</span>
-        <div class="bk-num-hint">🔒 নিচের বাটনে ক্লিক করুন</div>
+        <span class="bk-num-val" id="numDisplay">01869–775608</span>
+        <span class="bk-num-lock" id="lockIcon">🔒</span>
       </div>
-
     </div>
 
     <!-- CTA Button -->
@@ -290,6 +309,30 @@ footer .name{color:var(--gold);opacity:.55;font-size:.78rem;margin-top:.4rem;let
 
 <div class="toast" id="toast"></div>
 
+<!-- Step-by-step modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-title">✅ নম্বর কপি হয়েছে!</div>
+    <div class="modal-sub">এখন মাত্র ৩টি কাজ করুন</div>
+    <div class="modal-num" id="modalNum">01869775608</div>
+    <div class="modal-steps">
+      <div class="modal-step">
+        <div class="modal-sn">১</div>
+        <div class="modal-st"><strong>বিকাশ অ্যাপ</strong> খুলুন → নিচে <strong>Send Money</strong> চাপুন</div>
+      </div>
+      <div class="modal-step">
+        <div class="modal-sn">২</div>
+        <div class="modal-st">নম্বর বক্সে <strong>পেস্ট করুন</strong> — নম্বরটা ক্লিপবোর্ডে আছে 📋</div>
+      </div>
+      <div class="modal-step">
+        <div class="modal-sn">৩</div>
+        <div class="modal-st"><strong>পরিমাণ দিন</strong> এবং <strong>পাঠান</strong> — ব্যস, সালামি দেওয়া হয়ে গেল! 🎉</div>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">বুঝেছি, যাচ্ছি বিকাশে! 💚</button>
+  </div>
+</div>
+
 <footer>
   <p>🌙 ঈদ মোবারক • تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم 🌙</p>
   <p style="margin-top:.5rem">আল্লাহ আপনাদের ঈদ কবুল করুন ✨</p>
@@ -305,44 +348,54 @@ function drw(t){cx.clearRect(0,0,cv.width,cv.height);st.forEach(s=>{const a=.2+.
 rsz();mkSt();requestAnimationFrame(drw);
 window.addEventListener('resize',()=>{rsz();mkSt();});
 
-/* COPY */
+/* COPY + UNLOCK + MODAL */
 const NUM='01869775608';
-let cpTimer;
-function copyNum(){
-  const box=document.getElementById('numBox');
-  const lbl=document.getElementById('chlbl');
-  const doSuccess=()=>{
-    box.classList.add('copied');lbl.textContent='✅ কপি হয়েছে!';
-    clearTimeout(cpTimer);cpTimer=setTimeout(()=>{box.classList.remove('copied');lbl.textContent='কপি করুন';},3500);
-  };
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(NUM).then(doSuccess).catch(fallback);
-  } else { fallback(); }
-  function fallback(){
-    const ta=document.createElement('textarea');
-    ta.value=NUM;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
-    document.body.appendChild(ta);ta.focus();ta.select();
-    try{document.execCommand('copy');}catch(e){}
-    document.body.removeChild(ta);doSuccess();
-  }
-}
 
-const msgs=[
-  '📋 নম্বর কপি হয়েছে!\nবিকাশ অ্যাপ → Send Money\n→ 01869775608 পেস্ট করুন 💚',
-  '✅ কপি হয়েছে! জাযাকাল্লাহ!\nবিকাশ → Send Money → পেস্ট → পাঠান 🤲',
-  '🎉 নম্বর কপি! বিকাশে যান\n→ Send Money → পেস্ট → সালামি দিন! 💸',
-  '💚 এক ক্লিকে কপি হলো!\nবিকাশ → Send Money → 01869775608 🌙',
-];
-let tt;
-function showToast(txt){const t=document.getElementById('toast');t.textContent=txt;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),6500);}
+function copyNum(cb){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(NUM).then(cb).catch(()=>fallbackCopy(cb));
+  } else { fallbackCopy(cb); }
+}
+function fallbackCopy(cb){
+  const ta=document.createElement('textarea');
+  ta.value=NUM;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
+  document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);cb();
+}
 
 function handleCta(){
-  copyNum();
-  setTimeout(()=>{
-    showToast(msgs[~~(Math.random()*msgs.length)]);
+  const box=document.getElementById('numBox');
+  const btn=document.querySelector('.bk-cta');
+
+  // Disable button briefly
+  btn.disabled=true;
+  btn.style.opacity='.7';
+
+  copyNum(()=>{
+    // Unlock number display
+    box.classList.add('unlocked');
+
+    // Confetti
     launch();
-  },350);
+
+    // Show modal after short delay
+    setTimeout(()=>{
+      document.getElementById('modalOverlay').classList.add('show');
+      btn.disabled=false;
+      btn.style.opacity='1';
+    }, 600);
+  });
 }
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// Close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click',function(e){
+  if(e.target===this) closeModal();
+});
 
 function launch(){
   const cols=['#c9a84c','#f0c96e','#e2136e','#145a3c','#fff8dc','#50c878','#ff9ad5'];
